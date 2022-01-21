@@ -21,5 +21,7 @@ void cif_file_init(CIF_File *cif_file) {
 }
 
 void cif_file_clean(CIF_File *cif_file) {
-	NOT_IMPLEMENTED
+	free(cif_file->flags);
+	free(cif_file->metadatas);
+	free(cif_file->pixel_data);
 }
