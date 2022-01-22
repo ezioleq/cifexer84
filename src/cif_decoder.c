@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stddef.h>
+#include <string.h>
 #include <stdio.h>
 
 #include "utils.h"
@@ -32,6 +33,18 @@ bool cif_decoder_decode(CIF_Decoder *cif_decoder, CIF_File *cif_file) {
 	file_buffer[file_size] = 0;
 
 	fprintf(stderr, "Filesize: %ld KiB\n", file_size / 1024);
+
+	// Check the file magic
+	uint8_t magic_length = strlen(CIF_MAGIC);
+	if (cif_compare(&file_buffer[0], CIF_MAGIC, magic_length) != 0) {
+		fprintf(stderr, "Incorrect magic of the file, is it CIF file for sure?\n");
+		return false;
+	}
+
+	// Lé main loopé
+	for (size_t i = magic_length; i < file_size; ++i) {
+
+	}
 
 	// Free the memory
 	free(file_buffer);
