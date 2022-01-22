@@ -12,6 +12,6 @@ typedef struct CIF_Decoder {
 } CIF_Decoder;
 
 void cif_decoder_init(CIF_Decoder *cif_decoder);
-void cif_decoder_decode(CIF_Decoder *cif_decoder, CIF_File *cif_file);
+bool cif_decoder_decode(CIF_Decoder *cif_decoder, CIF_File *cif_file);
 
 #endif

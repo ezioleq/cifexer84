@@ -35,7 +35,9 @@ int main(int argc, char* argv[]) {
 	CIF_File file;
 	cif_file_init(&file);
 
-	cif_decoder_decode(&decoder, &file);
+	if (!cif_decoder_decode(&decoder, &file)) {
+		return 1;
+	}
 
 	cif_file_clean(&file);
 
