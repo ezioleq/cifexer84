@@ -14,4 +14,12 @@
 	#define ALWAYS_INLINE inline
 #endif
 
+ALWAYS_INLINE int cif_compare(const char *a, const char *b, size_t len) {
+	for (size_t i = len; i; --i) {
+		if (a[i] != b[i])
+			return 1;
+	}
+	return 0;
+}
+
 #endif
