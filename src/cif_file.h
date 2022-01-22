@@ -6,6 +6,7 @@
 #include <stdbool.h>
 
 #define CIF_MAGIC "CIF:"
+#define CIF_MAX_FLAGS 16
 
 // Different pixel sizes
 typedef enum CIF_PixelType {
@@ -28,11 +29,17 @@ typedef struct CIF_Pixel32 {
 	uint8_t a;
 } CIF_Pixel32;
 
+// Representation of metadatum
+typedef struct CIF_Metadatum {
+	char *key;
+	char *value;
+} CIF_Metadatum;
+
 // Representation of the CIF file
 typedef struct CIF_File {
 	// Magic, flags and version
 	const char *magic;
-	char *flags;
+	char **flags;
 	size_t flags_length;
 	uint32_t version;
 
@@ -42,8 +49,8 @@ typedef struct CIF_File {
 	uint32_t bpp;
 
 	// Metadata
-	char *metadatas;
-	size_t metadatas_length;
+	CIF_Metadatum **metadata;
+	size_t metadata_length;
 
 	// Data
 	CIF_PixelType pixel_type;
@@ -52,7 +59,9 @@ typedef struct CIF_File {
 
 } CIF_File;
 
-void cif_file_init(CIF_File *cif_file);
+bool cif_file_init(CIF_File *cif_file);
 void cif_file_clean(CIF_File *cif_file);
+
+bool cif_file_append_flag(CIF_File *cif_file, const char *flag);
 
 #endif
