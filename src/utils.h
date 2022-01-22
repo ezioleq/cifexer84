@@ -15,7 +15,7 @@
 #endif
 
 ALWAYS_INLINE int cif_compare(const char *a, const char *b, size_t len) {
-	for (size_t i = len; i; --i) {
+	for (size_t i = 0; i < len; ++i) {
 		if (a[i] != b[i])
 			return 1;
 	}
