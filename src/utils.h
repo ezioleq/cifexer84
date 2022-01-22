@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define NOT_IMPLEMENTED \
 	fprintf(stderr, "Called function \"%s\" is not implemented!\n", __func__); \
@@ -14,12 +15,12 @@
 	#define ALWAYS_INLINE inline
 #endif
 
-ALWAYS_INLINE int cif_compare(const char *a, const char *b, size_t len) {
+ALWAYS_INLINE bool cif_compare(const char *a, const char *b, size_t len) {
 	for (size_t i = 0; i < len; ++i) {
 		if (a[i] != b[i])
-			return 1;
+			return false;
 	}
-	return 0;
+	return true;
 }
 
 #endif
