@@ -23,4 +23,8 @@ ALWAYS_INLINE bool cif_compare(const char *a, const char *b, size_t len) {
 	return true;
 }
 
+ALWAYS_INLINE bool cif_is_whitespace(char c) {
+	return (c == ' ' || c == '\t');
+}
+
 #endif
