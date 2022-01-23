@@ -8,6 +8,9 @@
 #define CIF_MAGIC "CIF:"
 #define CIF_MAX_FLAGS 16
 
+// Supported flags
+#define CIF_FLAG_POLISH "polish"
+
 // Different pixel sizes
 typedef enum CIF_PixelType {
 	CIF_BPP_24 = 24,
@@ -63,5 +66,6 @@ bool cif_file_init(CIF_File *cif_file);
 void cif_file_clean(CIF_File *cif_file);
 
 bool cif_file_append_flag(CIF_File *cif_file, const char *flag);
+bool cif_file_get_flag(CIF_File *cif_file, const char *flag);
 
 #endif

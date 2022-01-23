@@ -71,3 +71,12 @@ bool cif_file_append_flag(CIF_File *cif_file, const char *flag) {
 
 	return true;
 }
+
+bool cif_file_get_flag(CIF_File *cif_file, const char *flag) {
+	for (size_t i = cif_file->flags_length - 1; i; --i) {
+		if (cif_compare(cif_file->flags[i], flag, strlen(flag)))
+			return true;
+	}
+
+	return false;
+}
