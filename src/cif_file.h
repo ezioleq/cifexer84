@@ -12,10 +12,10 @@
 #define CIF_FLAG_POLISH "polish"
 
 // Different pixel sizes
-typedef enum CIF_PixelType {
+typedef enum CIF_BitsPerPixel {
 	CIF_BPP_24 = 24,
 	CIF_BPP_32 = 32,
-} CIF_PixelType;
+} CIF_BitsPerPixel;
 
 // Representation of a 24-bit pixel
 typedef struct CIF_Pixel24 {
@@ -49,17 +49,15 @@ typedef struct CIF_File {
 	// Dimensions
 	uint32_t width;
 	uint32_t height;
-	uint32_t bpp;
+	CIF_BitsPerPixel bpp;
 
 	// Metadata
 	CIF_Metadatum **metadata;
 	size_t metadata_length;
 
 	// Data
-	CIF_PixelType pixel_type;
 	void *pixel_data;
 	size_t data_length;
-
 } CIF_File;
 
 bool cif_file_init(CIF_File *cif_file);

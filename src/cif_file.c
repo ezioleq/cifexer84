@@ -27,7 +27,6 @@ bool cif_file_init(CIF_File *cif_file) {
 	cif_file->metadata_length = 0;
 
 	// Initialize data fields
-	cif_file->pixel_type = 0;
 	cif_file->pixel_data = NULL;
 	cif_file->data_length = 0;
 
