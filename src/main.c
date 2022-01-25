@@ -39,6 +39,24 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
+	// Print whole CIF file header
+	{
+		fprintf(stderr, "MAGIC: \"%s\"\n", CIF_MAGIC);
+		fprintf(stderr, "FLAGS: [%ld]\n", file.flags_length);
+		for (size_t i = 0; i < file.flags_length; ++i) {
+			fprintf(stderr, "  FLAG: \"%s\"\n", file.flags[i]);
+		}
+		fprintf(stderr, "VERSION: %d\n", file.version);
+		fprintf(stderr, "WIDTH: %d\n", file.width);
+		fprintf(stderr, "HEIGTH: %d\n", file.height);
+		fprintf(stderr, "BPP: %d\n", file.bpp);
+		for (size_t i = 0;i < file.metadata_length; ++i) {
+			// TODO: Print metadatums
+			break;
+		}
+		fprintf(stderr, "DATA [%ld]\n", file.data_length);
+	}
+
 	cif_file_clean(&file);
 
 	return 0;
