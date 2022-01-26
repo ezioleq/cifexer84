@@ -13,6 +13,7 @@ executable(
 		'src/main.c',
 		'src/cif_file.c',
 		'src/cif_decoder.c',
+		'src/map/map.c',
 	],
 	dependencies: []
 )
