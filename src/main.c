@@ -15,6 +15,7 @@ int main(int argc, char* argv[]) {
 		fprintf(stderr, "cifexer84 [%d] : Ezioleq 2022 : %s\n", __LINE__, __DATE__);
 		fprintf(stderr, "Usage: cifexer84 <input.cif> <output.bmp> [OPTION]...\n");
 		fprintf(stderr, "\n");
+		fprintf(stderr, "  --verbose        Tell me (almost) everything\n");
 		fprintf(stderr, "  --dry-run        Do not save the result\n");
 
 		return 1;
@@ -28,6 +29,8 @@ int main(int argc, char* argv[]) {
 			for (size_t i = 2; i < argc; ++i) {
 				if (strcmp(argv[i], "--dry-run") == 0)
 					decoder.dry_run = true;
+				else if (strcmp(argv[i], "--verbose") == 0)
+					decoder.verbose = true;
 			}
 		}
 	}
@@ -40,7 +43,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	// Print whole CIF file header
-	{
+	if (decoder.verbose) {
 		fprintf(stderr, "MAGIC: \"%s\"\n", CIF_MAGIC);
 		fprintf(stderr, "FLAGS: [%ld]\n", file.flags_length);
 		for (size_t i = 0; i < file.flags_length; ++i) {
@@ -50,7 +53,8 @@ int main(int argc, char* argv[]) {
 		fprintf(stderr, "WIDTH: %d\n", file.width);
 		fprintf(stderr, "HEIGTH: %d\n", file.height);
 		fprintf(stderr, "BPP: %d\n", file.bpp);
-		for (size_t i = 0;i < file.metadata_length; ++i) {
+		fprintf(stderr, "METADATA: [%ld]\n", file.metadata_length);
+		for (size_t i = 0; i < file.metadata_length; ++i) {
 			// TODO: Print metadatums
 			break;
 		}

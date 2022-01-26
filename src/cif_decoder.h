@@ -17,6 +17,7 @@ typedef struct CIF_Decoder {
 	CIF_ParsingState state;
 	const char *input_path;
 	const char *output_path;
+	bool verbose;
 	bool dry_run;
 } CIF_Decoder;
 

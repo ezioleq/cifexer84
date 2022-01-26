@@ -11,6 +11,7 @@ void cif_decoder_init(CIF_Decoder *cif_decoder) {
 	cif_decoder->state = CIF_STATE_FLAGS;
 	cif_decoder->input_path = NULL;
 	cif_decoder->output_path = NULL;
+	cif_decoder->verbose = false;
 	cif_decoder->dry_run = false;
 }
 
@@ -33,7 +34,8 @@ bool cif_decoder_decode(CIF_Decoder *cif_decoder, CIF_File *cif_file) {
 	fclose(file);
 	file_buffer[file_size] = 0;
 
-	fprintf(stderr, "Filesize: %ld KiB\n", file_size / 1024);
+	if (cif_decoder->verbose)
+		fprintf(stderr, "FILE SIZE: %ld KiB\n", file_size / 1024);
 
 	// Check the file magic
 	uint8_t magic_length = strlen(CIF_MAGIC);
