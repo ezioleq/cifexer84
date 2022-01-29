@@ -8,9 +8,6 @@
 #define CIF_MAGIC "CIF:"
 #define CIF_MAX_FLAGS 16
 
-// Supported flags
-#define CIF_FLAG_POLISH "polish"
-
 // Different pixel sizes
 typedef enum CIF_BitsPerPixel {
 	CIF_BPP_24 = 24,

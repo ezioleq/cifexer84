@@ -5,6 +5,9 @@
 
 #include "cif_file.h"
 
+// Supported flags
+#define CIF_FLAG_POLISH "polish"
+
 typedef enum CIF_ParsingState {
 	CIF_STATE_FLAGS = 0,
 	CIF_STATE_VERSION = 1,
